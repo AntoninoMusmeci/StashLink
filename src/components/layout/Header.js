@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { HiOutlineLightBulb, HiOutlineSearch } from "react-icons/hi";
 import { HiOutlineBars3, HiOutlineXMark } from "react-icons/hi2";
 
-function Header() {
+function Header({showSidebar, setShowSidebar}) {
   const SaveUrls = () => {
     console.log(SaveUrls);
   };
   const [account, setAccount] = useState("Antonino");
-  const [showSidebar, setShowSidebar] = useState();
+
   return (
     <header className="header" data-testid="header">
       <nav className="settings">
