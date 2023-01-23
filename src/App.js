@@ -1,6 +1,8 @@
+import Header from "./components/layout/Header";
+import "./app.scss";
 function App() {
   return <div className="App">
-    <h1> Hello World </h1>
+    <Header/>
   </div>;
 }
 

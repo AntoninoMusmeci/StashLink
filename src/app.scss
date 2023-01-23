@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700,900');
+
+// general settings
+* {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto";
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    color: #202020;
+    background-color: #ffffff
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+//Variables
+$generic-box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 1px rgba(0, 0, 0, 0.1) 0px 4px 11px;
+$generic-border: 1px solid #f1f1f1;
+$nav-bg: #3e3744;
+$breakpoint: "900px";
+$hover-color: #eeeeee;
+$icon-color: white;
+
+/* Mixins
+  ============================================ */
+@mixin va($va-align: center) {
+    display: flex;
+    align-items: center;
+
+    @if $va-align ==right {
+        justify-content: right;
+    }
+
+    @if $va-align ==left {
+        justify-content: left;
+    }
+
+    @if $va-align ==center {
+        justify-content: center;
+    }
+}
+
+/*Header
+================================ */
+header {
+    border-bottom: solid 1px #ca2100;
+    background-color: $nav-bg;
+    transition: height 200ns ease-in;
+    box-shadow: 0 1px 2px rgbe(0, 0, 0, 0.15);
+    height: 44px;
+    z-index: 400;
+    position: fixed;
+    top: 0;
+    width: 100%;
+
+    nav {
+        align-items: center;
+      
+        margin: 0 10px 0 10px;
+
+        height: 44px;
+        color: $icon-color;
+
+        &.settings {
+            display: flex;
+            justify-content: space-between;
+     
+
+            ul {
+            
+                display: flex;
+                align-items: center;
+                gap:10px;
+                li {
+                    @include va;
+                    list-style-type: none;
+
+                    &.settings__button {
+                        cursor: pointer;
+                        width: 30px;
+                        height: 30px;
+
+                        &:hover {
+                            border-radius: 3px;
+                            background-color: rgba(255, 255, 255, 0.2);
+                        }
+                    }
+
+                    .settings__search-bar {
+
+                        display: flex;
+                        align-items: center;
+                        svg{
+
+                            margin:10px;
+                        }
+                        input{
+                            border: none;
+                            background-color: transparent;
+                            outline: none;
+                            &::placeholder {
+                                color: white
+                            }
+                            
+                        }
+                            max-width: 200px;
+                            border-radius: 5px;
+                            height: 35px;
+                            background-color: #e27065;
+
+               
+
+                            &:hover {
+                                background-color: white;
+                                color: black;
+                                input::placeholder {
+                                    color: black
+                                }
+                            }
+
+                            &::placeholder {
+                                color: white
+                            }
+                        
+
+                        margin: 0 10px 0 10px;
+                    }
+
+                    .settings_hero {
+                        @include va;
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 20px;
+                        background-color: brown;
+                    }
+                }
+            }
+        }
+    }
+}
