@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { FaInbox } from "react-icons/fa";
-
-function Sidebar({showSidebar, setShowSidebar}) {
+import { HiOutlineArchive, HiOutlineVideoCamera,HiBookOpen,HiOutlineStar } from "react-icons/hi";
+import { GrArticle } from "react-icons/gr";
+function Sidebar({ showSidebar, setShowSidebar }) {
   const [selected, setSelected] = useState(true);
 
   return (
@@ -16,8 +17,8 @@ function Sidebar({showSidebar, setShowSidebar}) {
       >
         <ul className="sidebar__generic">
           <li
-            className={selected === "SAVES" ? "active" : ""}
-            onClick={() => setSelected("SAVES")}
+            className={selected === "SAV" ? "active" : ""}
+            onClick={() => setSelected("SAV")}
           >
             <span>
               <FaInbox />
@@ -28,6 +29,44 @@ function Sidebar({showSidebar, setShowSidebar}) {
         <div className="sidebar__middle">
           <h2> Filters </h2>
         </div>
+        <ul className="sidebar__generic">
+          <li
+            className={selected === "FAV" ? "active" : ""}
+            onClick={() => setSelected("FAV")}
+          >
+            <span>
+              <HiOutlineStar />
+            </span>
+            <span> Favorites </span>
+          </li>
+          <li
+            className={selected === "ART" ? "active" : ""}
+            onClick={() => setSelected("ART")}
+          >
+            <span>
+              <HiBookOpen />
+            </span>
+            <span> Articles </span>
+          </li>
+          <li
+            className={selected === "VID" ? "active" : ""}
+            onClick={() => setSelected("VID")}
+          >
+            <span>
+              <HiOutlineVideoCamera />
+            </span>
+            <span> Videos </span>
+          </li>
+          <li
+            className={selected === "ARC" ? "active" : ""}
+            onClick={() => setSelected("ARC")}
+          >
+            <span>
+              <HiOutlineArchive />
+            </span>
+            <span> Archive </span>
+          </li>
+        </ul>
         <div className="sidebar__middle">
           <h2> Labels </h2>
         </div>
