@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { HiOutlineLightBulb, HiOutlineSearch } from "react-icons/hi";
 import { HiOutlineBars3, HiOutlineXMark } from "react-icons/hi2";
+import { HeaderProps } from "./types/type";
 
-function Header({showSidebar, setShowSidebar}) {
+function Header({showSidebar, setShowSidebar}: HeaderProps) {
   const SaveUrls = () => {
     console.log(SaveUrls);
   };

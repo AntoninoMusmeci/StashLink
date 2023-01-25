@@ -6,9 +6,9 @@ import {
   HiBookOpen,
   HiOutlineStar,
 } from "react-icons/hi";
-import { GrArticle } from "react-icons/gr";
-function Sidebar({ showSidebar, setShowSidebar }) {
-  const [selected, setSelected] = useState(true);
+import { HeaderProps } from "./types/type";
+function Sidebar({ showSidebar, setShowSidebar }: HeaderProps) {
+  const [selected, setSelected] = useState("");
   const [showLabels, setShowLabels] = useState(true);
   return (
     <div
@@ -80,7 +80,7 @@ function Sidebar({ showSidebar, setShowSidebar }) {
           <span className="sidebar__middle-labels">
             <FaChevronDown className={!showLabels ? "labels-hide" : ""} />
             <FaPlus
-              onClick={(e) => {
+              onClick={(e: React.MouseEvent<SVGElement>) => {
                 e.stopPropagation();
                 console.log("add label");
               }}
@@ -91,41 +91,41 @@ function Sidebar({ showSidebar, setShowSidebar }) {
         {showLabels && (
           <ul className="sidebar__generic">
             <li
-            className={selected === "FAV" ? "active" : ""}
-            onClick={() => setSelected("FAV")}
-          >
-            <span>
-              <HiOutlineStar />
-            </span>
-            <span> Favorites </span>
-          </li>
-          <li
-            className={selected === "ART" ? "active" : ""}
-            onClick={() => setSelected("ART")}
-          >
-            <span>
-              <HiBookOpen />
-            </span>
-            <span> Articles </span>
-          </li>
-          <li
-            className={selected === "VID" ? "active" : ""}
-            onClick={() => setSelected("VID")}
-          >
-            <span>
-              <HiOutlineVideoCamera />
-            </span>
-            <span> Videos </span>
-          </li>
-          <li
-            className={selected === "ARC" ? "active" : ""}
-            onClick={() => setSelected("ARC")}
-          >
-            <span>
-              <HiOutlineArchive />
-            </span>
-            <span> Archive </span>
-          </li>
+              className={selected === "FAV" ? "active" : ""}
+              onClick={() => setSelected("FAV")}
+            >
+              <span>
+                <HiOutlineStar />
+              </span>
+              <span> Favorites </span>
+            </li>
+            <li
+              className={selected === "ART" ? "active" : ""}
+              onClick={() => setSelected("ART")}
+            >
+              <span>
+                <HiBookOpen />
+              </span>
+              <span> Articles </span>
+            </li>
+            <li
+              className={selected === "VID" ? "active" : ""}
+              onClick={() => setSelected("VID")}
+            >
+              <span>
+                <HiOutlineVideoCamera />
+              </span>
+              <span> Videos </span>
+            </li>
+            <li
+              className={selected === "ARC" ? "active" : ""}
+              onClick={() => setSelected("ARC")}
+            >
+              <span>
+                <HiOutlineArchive />
+              </span>
+              <span> Archive </span>
+            </li>
           </ul>
         )}
       </div>
