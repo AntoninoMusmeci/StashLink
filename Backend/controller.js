@@ -3,7 +3,6 @@ const getWebPage = async (url) => {
   let processForPython = spawn("python", ["python_scripts/news.py", url], {
     maxBuffer: 10240000,
   });
-sole.log
   let dataStream = [];
 
   return new Promise((resolve, reject) => {
