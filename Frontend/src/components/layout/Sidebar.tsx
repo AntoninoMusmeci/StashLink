@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { FaInbox, FaChevronDown, FaPlus } from "react-icons/fa";
+import React, { useState, useContext } from "react";
+import { FaInbox, FaChevronDown } from "react-icons/fa";
 import {
   HiOutlineArchive,
   HiOutlineVideoCamera,
@@ -7,9 +7,13 @@ import {
   HiOutlineStar,
 } from "react-icons/hi";
 import { HeaderProps } from "./types/type";
+import AddLabel from "../AddLabel";
+import { LabelContext } from "../../context";
+
 function Sidebar({ showSidebar, setShowSidebar }: HeaderProps) {
   const [selected, setSelected] = useState("");
   const [showLabels, setShowLabels] = useState(true);
+  const { labels } = useContext(LabelContext);
   return (
     <div
       className={showSidebar ? "sidebar_wrapper" : ""}
@@ -79,53 +83,20 @@ function Sidebar({ showSidebar, setShowSidebar }: HeaderProps) {
           <h2> Labels </h2>
           <span className="sidebar__middle-labels">
             <FaChevronDown className={!showLabels ? "labels-hide" : ""} />
-            <FaPlus
-              onClick={(e: React.MouseEvent<SVGElement>) => {
-                e.stopPropagation();
-                console.log("add label");
-              }}
-            />
+            <AddLabel />
           </span>
         </div>
         {/*TODO: Move The list of label in another component */}
         {showLabels && (
           <ul className="sidebar__generic">
-            <li
-              className={selected === "FAV" ? "active" : ""}
-              onClick={() => setSelected("FAV")}
-            >
-              <span>
-                <HiOutlineStar />
-              </span>
-              <span> Favorites </span>
-            </li>
-            <li
-              className={selected === "ART" ? "active" : ""}
-              onClick={() => setSelected("ART")}
-            >
-              <span>
-                <HiBookOpen />
-              </span>
-              <span> Articles </span>
-            </li>
-            <li
-              className={selected === "VID" ? "active" : ""}
-              onClick={() => setSelected("VID")}
-            >
-              <span>
-                <HiOutlineVideoCamera />
-              </span>
-              <span> Videos </span>
-            </li>
-            <li
-              className={selected === "ARC" ? "active" : ""}
-              onClick={() => setSelected("ARC")}
-            >
-              <span>
-                <HiOutlineArchive />
-              </span>
-              <span> Archive </span>
-            </li>
+            {labels.map((label: string) => (
+              <li
+                className={selected === label ? "active" : ""}
+                onClick={() => setSelected(label)}
+              >
+                <span> {label} </span>
+              </li>
+            ))}
           </ul>
         )}
       </div>
