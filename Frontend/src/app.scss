@@ -55,6 +55,21 @@ $sidebar-color: #f9f9f9;
     }
 }
 
+@mixin btn($width) {
+    min-width: $width;
+    color: #fff;
+    border: 1px solid transparent;
+    margin-right: 5px;
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 17px;
+    padding: 6px 12px 7px 12px;
+    border-radius: 3px;
+    text-align: center;
+    cursor: pointer;
+}
+
 /*Header
 ================================ */
 header {
@@ -287,7 +302,6 @@ header {
     a {
         text-decoration: none;
         color: black;
-    
     }
 
     &__image {
@@ -302,7 +316,6 @@ header {
         margin-top: 15px;
         font-family: "Graphik";
         font-weight: 500;
-   
     }
 
     &__website {
@@ -310,6 +323,62 @@ header {
             font-size: 15px;
             color: gray;
         }
+
         margin-top: 10px;
+    }
+}
+
+/*Header
+================================ */
+.modal__wrapper {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: gray;
+    display: flex;
+    justify-content: center;
+}
+
+.modal {
+    background-color: white;
+    width: 400px;
+    height: 250px;
+    margin-top: 100px;
+
+    &__content {
+
+        // padding: 10px;
+        // min-width: 400px;
+        // min-height: 180px;
+        // display: flex;
+        // flex-direction: column;
+        // border-radius: 10px;
+        // background-color: white;
+        // color: black;
+        &-button {
+            gap: 10px;
+            @include va('right');
+
+            button:nth-child(1) {
+                @include btn(70px);
+                color: #555;
+
+                &:hover {
+                    background-color: gray;
+                    color: white
+                }
+            }
+
+            button:nth-child(2) {
+                @include btn(70px);
+                background-color: $nav-bg;
+
+                &:hover {
+                    background-color: #b03d32;
+                }
+            }
+        }
     }
 }
