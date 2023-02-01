@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import { HiOutlineLightBulb, HiOutlineSearch } from "react-icons/hi";
 import { HiOutlineBars3, HiOutlineXMark } from "react-icons/hi2";
 import { HeaderProps } from "./types/type";
-
-function Header({showSidebar, setShowSidebar}: HeaderProps) {
-  const SaveUrls = () => {
-    console.log(SaveUrls);
-  };
+import Modal from "../Modal";
+import AddUrl from "../AddUrl";
+function Header({ showSidebar, setShowSidebar }: HeaderProps) {
   const [account, setAccount] = useState("Antonino");
-
+  const [showModal, setShowModal] = useState(false);
+  const [newUrl, setNewUrl] = useState("");
+  const SaveUrls = () => {
+    console.log("New url saved", newUrl);
+  };
   return (
     <header className="header" data-testid="header">
       <nav className="settings">
@@ -22,7 +24,7 @@ function Header({showSidebar, setShowSidebar}: HeaderProps) {
             </li>
 
             <li>StashLink</li>
-            <li >
+            <li>
               <div className="settings__search-bar">
                 <HiOutlineSearch></HiOutlineSearch>
                 <input placeholder="Search..." />
@@ -32,9 +34,7 @@ function Header({showSidebar, setShowSidebar}: HeaderProps) {
         </div>
         <div className="settings__right">
           <ul>
-            <li className="settings__button" onClick={SaveUrls}>
-              +
-            </li>
+            <AddUrl />
             <li className="settings__button">
               <HiOutlineLightBulb></HiOutlineLightBulb>
             </li>

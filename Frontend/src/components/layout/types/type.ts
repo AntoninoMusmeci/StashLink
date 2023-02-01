@@ -6,9 +6,9 @@ export type HeaderProps = {
   }
 
 export type UrlInfo = {
-  publicationDate: string;
+  // publicationDate: string;
   title: string;
-  images: string;
-  authors: string[];
-  keywords: string[];
+  image: string;
+  // authors: string[];
+  // keywords: string[];
 }
